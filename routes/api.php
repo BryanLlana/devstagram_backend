@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\auth\AuthController;
+use App\Http\Controllers\post\PostController;
 use App\Http\Controllers\wall\WallController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -17,4 +18,6 @@ Route::middleware('auth:sanctum')->group(function () {
         ->missing(function () {
             return response()->json(['message' => 'Usuario no encontrado'], 404);
         });
+
+    Route::post("/post/create", [PostController::class, "store"]);
 });
